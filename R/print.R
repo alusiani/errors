@@ -33,9 +33,10 @@ format.errors = function(x,
   append <- rep("", length(x))
 
   e <- signif(errors(x), digits)
-  exponent <- get_exponent(x)
+  e_expon = get_exponent(e)
+  exponent <- ifelse(as.numeric(x)==0, e_expon+1, get_exponent(x))
   value_digits <- ifelse(e, digits - get_exponent(e), getOption("digits"))
-  value <- ifelse(e, signif(.v(x), exponent + value_digits), .v(x))
+  value <- ifelse(e, signif(as.numeric(x), exponent + value_digits), as.numeric(x))
 
   cond <- (scientific | (exponent > 4+scipen | exponent < -3-scipen)) & is.finite(e)
   e[cond] <- e[cond] * 10^(-exponent[cond])
@@ -46,7 +47,10 @@ format.errors = function(x,
   if (notation == "parenthesis") {
     sep <- "("
     append[] <- ")"
-    e[is.finite(e)] <- (e * 10^(pmax(0, value_digits-1)))[is.finite(e)]
+    # commented statement that removes decimal point when formatting uncertainty
+    # e[is.finite(e)] <- (e * 10^(pmax(0, value_digits-1)))[is.finite(e)]
+    e_scale_flag = (cond & e_expon < exponent) | (!cond & is.finite(e) & e_expon<0)
+    e[e_scale_flag] <- (e * 10^(pmax(0, value_digits-1)))[e_scale_flag]
   } else {
     sep <- paste0(" ", .pm, " ")
     prepend[cond] <- "("
@@ -56,7 +60,7 @@ format.errors = function(x,
 
   value <- sapply(seq_along(value), function(i) {
     if (!is.finite(e[[i]]))
-      format(.v(x)[[i]])
+      format(as.numeric(x)[[i]])
     else if (e[[i]])
       formatC(value[[i]], format="f", digits=max(0, value_digits[[i]]-1), decimal.mark=getOption("OutDec"))
     else format(value[[i]])
