@@ -25,11 +25,18 @@ The installation of this forked package requires the
 
 ```r
 # install.packages("remotes")
-remotes::install_github("r-quantities/errors")
+remotes::install_github("alusiani/errors")
 ```
 
 The official package on CRAN can be installed as follows:
 
 ```r
 install.packages("errors")
+```
+
+and from github, using the [remotes](https://cran.r-project.org/package=remotes) package:
+
+```r
+# install.packages("remotes")
+remotes::install_github("r-quantities/errors")
 ```
