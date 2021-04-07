@@ -20,16 +20,16 @@ R Journal publication, which should be used for citations:
 
 ## Installation
 
-Install the release version from CRAN:
-
-``` r
-install.packages("errors")
-```
-
-The installation from GitHub requires the
+The installation of this forked package requires the
 [remotes](https://cran.r-project.org/package=remotes) package.
 
 ```r
 # install.packages("remotes")
 remotes::install_github("r-quantities/errors")
+```
+
+The official package on CRAN can be installed as follows:
+
+```r
+install.packages("errors")
 ```
