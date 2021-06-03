@@ -1,4 +1,16 @@
-# <img src="https://avatars1.githubusercontent.com/u/32303769?s=40&v=4"> errors: Uncertainty Propagation for R Vectors
+# forked r-quantities/errors with custom printing of uncertainties
+
+The original package prints 12.34 +- 3.78 as "12.34(378)". This fork has been modified to print instead "12.34(3.78)".
+## Installation
+
+The installation of this forked package requires the
+[remotes](https://cran.r-project.org/package=remotes) package.
+
+```r
+# install.packages("remotes")
+remotes::install_github("alusiani/errors")
+```
+# original documentation: errors: Uncertainty Propagation for R Vectors
 
 [![Build Status](https://github.com/r-quantities/errors/workflows/build/badge.svg)](https://github.com/r-quantities/errors/actions)
 [![Coverage Status](https://codecov.io/gh/r-quantities/errors/branch/master/graph/badge.svg)](https://codecov.io/gh/r-quantities/errors)
@@ -19,16 +31,6 @@ R Journal publication, which should be used for citations:
 - Iñaki Ucar, Edzer Pebesma and Arturo Azcorra (2018). "Measurement Errors in R." _The R Journal_, 10 (2), 549--557. DOI: [10.32614/RJ-2018-075](https://doi.org/10.32614/RJ-2018-075)
 
 ## Installation
-
-The installation of this forked package requires the
-[remotes](https://cran.r-project.org/package=remotes) package.
-
-```r
-# install.packages("remotes")
-remotes::install_github("alusiani/errors")
-```
-
-The official package on CRAN can be installed as follows:
 
 ```r
 install.packages("errors")
